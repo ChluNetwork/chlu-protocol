@@ -1,0 +1,17 @@
+import "popr.proto";
+
+message ReviewRecord {
+  message DetailedReview {
+    required string attribute = 1;
+    required string review_text = 2;
+    required uint32 rating = 3;
+  }
+  required string currency_symbol = 1;
+  required int32 amount = 2;
+  optional string review_text = 3;
+  optional uint32 rating = 4;
+  repeated DetailedReview detailed_review = 5;
+  required PoPR popr = 6;
+  required uint32 chlu_version = 7;
+  required string hash = 8;
+}

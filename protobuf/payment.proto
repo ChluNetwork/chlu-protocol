@@ -1,0 +1,8 @@
+import "review_record.proto";
+
+message PaymentRecord {
+  required string customer_address = 1;
+  required string vendor_address = 2;
+  required int32 amount = 3;
+  required ReviewRecord review_record = 4;
+}

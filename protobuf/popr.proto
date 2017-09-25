@@ -1,0 +1,22 @@
+message PoPR {
+  message ReviewAttribute {
+    required string name = 1;
+    required uint32 min_rating = 2;
+    required uint32 max_rating = 3;
+    required string description = 4;
+    required bool be_present = 5;
+  }
+  optional string item_id = 1;
+  optional string invoice_id = 2;
+  optional string customer_id = 3;
+  optional uint64 created_at = 4;
+  optional uint64 expires_at = 5;
+  required string currency_symbol = 6;
+  required int32 amount = 7;
+  optional string marketplace_url = 8;
+  optional string marketplace_vendor_url = 9;
+  required string key_location = 10;
+  required uint32 chlu_version = 11;
+  repeated ReviewAttribute attributes = 12;
+  required string signature = 13;
+}
