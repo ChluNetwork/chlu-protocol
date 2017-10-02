@@ -183,7 +183,7 @@ The entire contents of the review record are hashed using SHA256 and
 saved in the ```hash``` field. Further, the entire contents (apart
 from the hash) are encrypted using the vendor public key accessible
 from IPFS. The location of the key and how it should be accessed by
-the Custome Wallet is described in the Vendor Wallet Setup section.
+the Customer Wallet is described in the Vendor Wallet Setup section.
 
 ## Payment Record
 
@@ -227,22 +227,23 @@ published for the vendor. This IPNS location is used to publish vendor
 keys as described in the next section. It is up to the wallet provider
 how the vendor IPFS key is created and safe guarded. The wallet also
 has to make sure this key is exported when the wallet is exported, as
-described in the Exporting Wallet section, and the key is imported and
-IPNS setup completed with the imported key.
+described in the Exporting Wallet section. The wallet also has to make
+sure the key can be imported and IPNS setup completed with the
+imported key.
 
 ### Setup Signing Key Pair (Sv, Pv) ###
 
 When the vendor is setting up their wallet for the first time, a new
-key pair should be generate to be used for signing the PoPR. They key
+key pair should be generated to be used for signing the PoPR. They key
 pair should be an elliptical curce key pair using the same curve as
 the one used in bitcoin - secp256k1.
 
 This key pair is different from the key pair used to generate bitcoin
-or other cryptocurrencies key pairs and addresses
+or other cryptocurrencies key pairs and addresses.
 
-The wallet needs to store the private key, Sv, in the wallets persistent
-storage and let the vendor know this key is important to keep
-receiving reviews that can be validated in the future.
+The wallet needs to store the private key, Sv, in the wallet's
+persistent storage and let the vendor know this key is important to
+keep receiving reviews that can be validated in the future.
 
 The public key, Pv should be stored in the IPNS location created
 as described earlier in the 'Setup IPNS for the vendor' section.
@@ -275,7 +276,7 @@ Chlu wallet, the wallet has to export all of the following:
    require a secret that can be saved. Chlu wallets should export all
    such required information for all cryptocurrencies supported.
 2. Wallets should export the Signing and Encryption key pairs as
-   well. A mnemonic can be used to export the signing key pair, and a
+   well. A mnemonic can be used to export the signing key pair, and an
    RSA encryption key should be exported in PEM/base64 format
 3. Finally, wallets have to export the IPFS RSA key used to publish
    content under the vendor's name.
