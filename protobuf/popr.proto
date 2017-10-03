@@ -4,7 +4,7 @@ message PoPR {
     required uint32 min_rating = 2;
     required uint32 max_rating = 3;
     required string description = 4;
-    required bool be_present = 5;
+    required bool is_required = 5;
   }
   optional string item_id = 1;
   optional string invoice_id = 2;
