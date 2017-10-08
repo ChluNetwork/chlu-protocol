@@ -145,18 +145,20 @@ vendor.
 ```proto
     message ReviewRecord {
         message DetailedReview {
-            required string attribute = 1;
-            required string review_text = 2;
-            required uint32 rating = 3;
-        }
-        required string currency_symbol = 1;
-        required int32 amount = 2;
-        optional string review_text = 3;
-        optional uint32 rating = 4;
-        repeated DetailedReview detailed_review = 5;
-        required PoPR popr = 6;
-        required uint32 chlu_version = 7;
-        required string hash = 8;
+        required string attribute = 1;
+        required string review_text = 2;
+        required uint32 rating = 3;
+    }
+    required string currency_symbol = 1;
+    required int32 amount = 2;
+    required string customer_address = 3;
+    required string vendor_address = 4;
+    optional string review_text = 5;
+    optional uint32 rating = 6;
+    repeated DetailedReview detailed_review = 7;
+    required PoPR popr = 8;
+    required uint32 chlu_version = 9;
+    required string hash = 10;
 }
 
 ```
@@ -165,6 +167,8 @@ Field | Description
 ----- | -----------
 currency_symbol | The currency symbol of the cryptocurrency used to make the payment.
 amount | Number of base units in currency (e.g. Satoshis when using BTC).
+customer_address | Address of the customer in the selected cryptocurrency
+vendor_address | Address of the vendor in the selected cryptocurrency
 review_text | The text of the review left by the customer. Optional because the customer can choose to not review.
 rating | The overall rating, from 1 to 5, left by the customer. Optional because the customer can choose to not provide a rating.
 detailed_review | A list of ```DetailedReview``` that contains any other details a marketplace wants to capture about the review.
@@ -369,7 +373,9 @@ and ratings data in a couple of different ways.
    the vendor recieves payments.
 2. A vendor runs a service to push reviews to a marketplace. The
    vendor wallet can choose to provide this service to the vendor, but
-   it is not a required feature.
+   it is not a required feature. The review record has a reference to
+   the payment captured by customer_address, vendor_adress and the
+   currency symbol
 
 To validate a review a marketplace must follow the protocol:
 

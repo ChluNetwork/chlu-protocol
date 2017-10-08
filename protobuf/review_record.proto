@@ -8,10 +8,12 @@ message ReviewRecord {
   }
   required string currency_symbol = 1;
   required int32 amount = 2;
-  optional string review_text = 3;
-  optional uint32 rating = 4;
-  repeated DetailedReview detailed_review = 5;
-  required PoPR popr = 6;
-  required uint32 chlu_version = 7;
-  required string hash = 8;
+  required string customer_address = 3;
+  required string vendor_address = 4;
+  optional string review_text = 5;
+  optional uint32 rating = 6;
+  repeated DetailedReview detailed_review = 7;
+  required PoPR popr = 8;
+  required uint32 chlu_version = 9;
+  required string hash = 10;
 }
