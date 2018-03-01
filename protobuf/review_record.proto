@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 import "popr.proto";
 
 message ReviewRecord {
@@ -16,4 +18,5 @@ message ReviewRecord {
   required PoPR popr = 8;
   required uint32 chlu_version = 9;
   required string hash = 10;
+  optional string prev = 11;
 }

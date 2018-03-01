@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 message PoPR {
   message ReviewAttribute {
     required string name = 1;
@@ -19,4 +21,6 @@ message PoPR {
   required uint32 chlu_version = 11;
   repeated ReviewAttribute attributes = 12;
   required string signature = 13;
+  required string vendor_key_location = 14;
+  required string vendor_encryption_key_location = 15;
 }
