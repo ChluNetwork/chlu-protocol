@@ -55,8 +55,6 @@ message ReviewRecord {
 
 
   // Supporting spec
-  required string id = 17;
-
   message Location {
 
     required float lat = 1;
