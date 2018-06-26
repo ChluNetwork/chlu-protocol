@@ -12,7 +12,6 @@ goog.provide('proto.ReviewRecord.Author');
 goog.provide('proto.ReviewRecord.DetailedReview');
 goog.provide('proto.ReviewRecord.Location');
 goog.provide('proto.ReviewRecord.Platform');
-goog.provide('proto.ReviewRecord.Rating');
 goog.provide('proto.ReviewRecord.Review');
 goog.provide('proto.ReviewRecord.Subject');
 goog.provide('proto.ReviewRecord.Verification');
@@ -23,6 +22,7 @@ goog.require('jspb.BinaryReader');
 goog.require('jspb.BinaryWriter');
 goog.require('jspb.Message');
 goog.require('proto.PoPR');
+goog.require('proto.Rating');
 goog.require('proto.Signature');
 
 
@@ -102,7 +102,7 @@ proto.ReviewRecord.toObject = function(includeInstance, msg) {
     platform: (f = msg.getPlatform()) && proto.ReviewRecord.Platform.toObject(includeInstance, f),
     author: (f = msg.getAuthor()) && proto.ReviewRecord.Author.toObject(includeInstance, f),
     review: (f = msg.getReview()) && proto.ReviewRecord.Review.toObject(includeInstance, f),
-    ratingDetails: (f = msg.getRatingDetails()) && proto.ReviewRecord.Rating.toObject(includeInstance, f),
+    ratingDetails: (f = msg.getRatingDetails()) && proto.Rating.toObject(includeInstance, f),
     verifiable: jspb.Message.getField(msg, 25),
     verification: (f = msg.getVerification()) && proto.ReviewRecord.Verification.toObject(includeInstance, f),
     issuerSignature: (f = msg.getIssuerSignature()) && proto.Signature.toObject(includeInstance, f)
@@ -237,8 +237,8 @@ proto.ReviewRecord.deserializeBinaryFromReader = function(msg, reader) {
       msg.setReview(value);
       break;
     case 24:
-      var value = new proto.ReviewRecord.Rating;
-      reader.readMessage(value,proto.ReviewRecord.Rating.deserializeBinaryFromReader);
+      var value = new proto.Rating;
+      reader.readMessage(value,proto.Rating.deserializeBinaryFromReader);
       msg.setRatingDetails(value);
       break;
     case 25:
@@ -449,7 +449,7 @@ proto.ReviewRecord.serializeBinaryToWriter = function(message, writer) {
     writer.writeMessage(
       24,
       f,
-      proto.ReviewRecord.Rating.serializeBinaryToWriter
+      proto.Rating.serializeBinaryToWriter
     );
   }
   f = /** @type {boolean} */ (jspb.Message.getField(message, 25));
@@ -527,7 +527,7 @@ proto.ReviewRecord.DetailedReview.toObject = function(includeInstance, msg) {
   var f, obj = {
     attribute: jspb.Message.getField(msg, 1),
     reviewText: jspb.Message.getField(msg, 2),
-    rating: (f = msg.getRating()) && proto.ReviewRecord.Rating.toObject(includeInstance, f),
+    rating: (f = msg.getRating()) && proto.Rating.toObject(includeInstance, f),
     category: jspb.Message.getField(msg, 4)
   };
 
@@ -574,8 +574,8 @@ proto.ReviewRecord.DetailedReview.deserializeBinaryFromReader = function(msg, re
       msg.setReviewText(value);
       break;
     case 3:
-      var value = new proto.ReviewRecord.Rating;
-      reader.readMessage(value,proto.ReviewRecord.Rating.deserializeBinaryFromReader);
+      var value = new proto.Rating;
+      reader.readMessage(value,proto.Rating.deserializeBinaryFromReader);
       msg.setRating(value);
       break;
     case 4:
@@ -630,7 +630,7 @@ proto.ReviewRecord.DetailedReview.serializeBinaryToWriter = function(message, wr
     writer.writeMessage(
       3,
       f,
-      proto.ReviewRecord.Rating.serializeBinaryToWriter
+      proto.Rating.serializeBinaryToWriter
     );
   }
   f = /** @type {string} */ (jspb.Message.getField(message, 4));
@@ -703,15 +703,15 @@ proto.ReviewRecord.DetailedReview.prototype.hasReviewText = function() {
 
 /**
  * required Rating rating = 3;
- * @return {!proto.ReviewRecord.Rating}
+ * @return {!proto.Rating}
  */
 proto.ReviewRecord.DetailedReview.prototype.getRating = function() {
-  return /** @type{!proto.ReviewRecord.Rating} */ (
-    jspb.Message.getWrapperField(this, proto.ReviewRecord.Rating, 3, 1));
+  return /** @type{!proto.Rating} */ (
+    jspb.Message.getWrapperField(this, proto.Rating, 3, 1));
 };
 
 
-/** @param {!proto.ReviewRecord.Rating} value */
+/** @param {!proto.Rating} value */
 proto.ReviewRecord.DetailedReview.prototype.setRating = function(value) {
   jspb.Message.setWrapperField(this, 3, value);
 };
@@ -2094,244 +2094,6 @@ proto.ReviewRecord.Review.prototype.hasText = function() {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.ReviewRecord.Rating = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
-};
-goog.inherits(proto.ReviewRecord.Rating, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  proto.ReviewRecord.Rating.displayName = 'proto.ReviewRecord.Rating';
-}
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto suitable for use in Soy templates.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     com.google.apps.jspb.JsClassTemplate.JS_RESERVED_WORDS.
- * @param {boolean=} opt_includeInstance Whether to include the JSPB instance
- *     for transitional soy proto support: http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.ReviewRecord.Rating.prototype.toObject = function(opt_includeInstance) {
-  return proto.ReviewRecord.Rating.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Whether to include the JSPB
- *     instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.ReviewRecord.Rating} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.ReviewRecord.Rating.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    min: jspb.Message.getField(msg, 1),
-    max: jspb.Message.getField(msg, 2),
-    value: jspb.Message.getField(msg, 3)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.ReviewRecord.Rating}
- */
-proto.ReviewRecord.Rating.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.ReviewRecord.Rating;
-  return proto.ReviewRecord.Rating.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.ReviewRecord.Rating} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.ReviewRecord.Rating}
- */
-proto.ReviewRecord.Rating.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setMin(value);
-      break;
-    case 2:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setMax(value);
-      break;
-    case 3:
-      var value = /** @type {number} */ (reader.readUint32());
-      msg.setValue(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.ReviewRecord.Rating.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.ReviewRecord.Rating.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.ReviewRecord.Rating} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.ReviewRecord.Rating.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = /** @type {number} */ (jspb.Message.getField(message, 1));
-  if (f != null) {
-    writer.writeUint32(
-      1,
-      f
-    );
-  }
-  f = /** @type {number} */ (jspb.Message.getField(message, 2));
-  if (f != null) {
-    writer.writeUint32(
-      2,
-      f
-    );
-  }
-  f = /** @type {number} */ (jspb.Message.getField(message, 3));
-  if (f != null) {
-    writer.writeUint32(
-      3,
-      f
-    );
-  }
-};
-
-
-/**
- * required uint32 min = 1;
- * @return {number}
- */
-proto.ReviewRecord.Rating.prototype.getMin = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/** @param {number} value */
-proto.ReviewRecord.Rating.prototype.setMin = function(value) {
-  jspb.Message.setField(this, 1, value);
-};
-
-
-proto.ReviewRecord.Rating.prototype.clearMin = function() {
-  jspb.Message.setField(this, 1, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.ReviewRecord.Rating.prototype.hasMin = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * required uint32 max = 2;
- * @return {number}
- */
-proto.ReviewRecord.Rating.prototype.getMax = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
-};
-
-
-/** @param {number} value */
-proto.ReviewRecord.Rating.prototype.setMax = function(value) {
-  jspb.Message.setField(this, 2, value);
-};
-
-
-proto.ReviewRecord.Rating.prototype.clearMax = function() {
-  jspb.Message.setField(this, 2, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.ReviewRecord.Rating.prototype.hasMax = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * required uint32 value = 3;
- * @return {number}
- */
-proto.ReviewRecord.Rating.prototype.getValue = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/** @param {number} value */
-proto.ReviewRecord.Rating.prototype.setValue = function(value) {
-  jspb.Message.setField(this, 3, value);
-};
-
-
-proto.ReviewRecord.Rating.prototype.clearValue = function() {
-  jspb.Message.setField(this, 3, undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.ReviewRecord.Rating.prototype.hasValue = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
 proto.ReviewRecord.Verification = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
@@ -3525,15 +3287,15 @@ proto.ReviewRecord.prototype.hasReview = function() {
 
 /**
  * required Rating rating_details = 24;
- * @return {!proto.ReviewRecord.Rating}
+ * @return {!proto.Rating}
  */
 proto.ReviewRecord.prototype.getRatingDetails = function() {
-  return /** @type{!proto.ReviewRecord.Rating} */ (
-    jspb.Message.getWrapperField(this, proto.ReviewRecord.Rating, 24, 1));
+  return /** @type{!proto.Rating} */ (
+    jspb.Message.getWrapperField(this, proto.Rating, 24, 1));
 };
 
 
-/** @param {!proto.ReviewRecord.Rating} value */
+/** @param {!proto.Rating} value */
 proto.ReviewRecord.prototype.setRatingDetails = function(value) {
   jspb.Message.setWrapperField(this, 24, value);
 };

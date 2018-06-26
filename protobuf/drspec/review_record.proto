@@ -2,6 +2,7 @@ syntax = "proto2";
 
 import "popr.proto";
 import "signature.proto";
+import "rating.proto";
 
 message ReviewRecord {
   
@@ -108,15 +109,6 @@ message ReviewRecord {
     
   }
   
-
-  message Rating {
-
-    required uint32 min = 1;
-
-    required uint32 max = 2;
-
-    required uint32 value = 3;
-  }
   
   // timestamp when the review was issued
   required uint64 issued = 18;

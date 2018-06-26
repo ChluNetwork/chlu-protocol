@@ -13,6 +13,7 @@ goog.provide('proto.PoPR.ReviewAttribute');
 goog.require('jspb.BinaryReader');
 goog.require('jspb.BinaryWriter');
 goog.require('jspb.Message');
+goog.require('proto.Signature');
 
 
 /**
@@ -83,7 +84,9 @@ proto.PoPR.toObject = function(includeInstance, msg) {
     proto.PoPR.ReviewAttribute.toObject, includeInstance),
     signature: jspb.Message.getField(msg, 13),
     vendorKeyLocation: jspb.Message.getField(msg, 14),
-    vendorEncryptionKeyLocation: jspb.Message.getField(msg, 15)
+    vendorEncryptionKeyLocation: jspb.Message.getField(msg, 15),
+    vendorDid: jspb.Message.getField(msg, 16),
+    sig: (f = msg.getSig()) && proto.Signature.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -180,6 +183,15 @@ proto.PoPR.deserializeBinaryFromReader = function(msg, reader) {
     case 15:
       var value = /** @type {string} */ (reader.readString());
       msg.setVendorEncryptionKeyLocation(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setVendorDid(value);
+      break;
+    case 17:
+      var value = new proto.Signature;
+      reader.readMessage(value,proto.Signature.deserializeBinaryFromReader);
+      msg.setSig(value);
       break;
     default:
       reader.skipField();
@@ -314,6 +326,21 @@ proto.PoPR.serializeBinaryToWriter = function(message, writer) {
     writer.writeString(
       15,
       f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 16));
+  if (f != null) {
+    writer.writeString(
+      16,
+      f
+    );
+  }
+  f = message.getSig();
+  if (f != null) {
+    writer.writeMessage(
+      17,
+      f,
+      proto.Signature.serializeBinaryToWriter
     );
   }
 };
@@ -1075,6 +1102,65 @@ proto.PoPR.prototype.clearVendorEncryptionKeyLocation = function() {
  */
 proto.PoPR.prototype.hasVendorEncryptionKeyLocation = function() {
   return jspb.Message.getField(this, 15) != null;
+};
+
+
+/**
+ * required string vendor_did = 16;
+ * @return {string}
+ */
+proto.PoPR.prototype.getVendorDid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/** @param {string} value */
+proto.PoPR.prototype.setVendorDid = function(value) {
+  jspb.Message.setField(this, 16, value);
+};
+
+
+proto.PoPR.prototype.clearVendorDid = function() {
+  jspb.Message.setField(this, 16, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.PoPR.prototype.hasVendorDid = function() {
+  return jspb.Message.getField(this, 16) != null;
+};
+
+
+/**
+ * required Signature sig = 17;
+ * @return {!proto.Signature}
+ */
+proto.PoPR.prototype.getSig = function() {
+  return /** @type{!proto.Signature} */ (
+    jspb.Message.getWrapperField(this, proto.Signature, 17, 1));
+};
+
+
+/** @param {!proto.Signature} value */
+proto.PoPR.prototype.setSig = function(value) {
+  jspb.Message.setWrapperField(this, 17, value);
+};
+
+
+proto.PoPR.prototype.clearSig = function() {
+  jspb.Message.setField(this, 17, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.PoPR.prototype.hasSig = function() {
+  return jspb.Message.getField(this, 17) != null;
 };
 
 
