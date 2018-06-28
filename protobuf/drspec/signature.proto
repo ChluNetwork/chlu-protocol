@@ -1,16 +1,16 @@
-syntax = "proto2";
+syntax = "proto3";
 
 message Signature {
 
-  required string type = 1;
+  string type = 1;
 
-  required uint64 created = 2;
+  uint64 created = 2;
 
   // the did of the signing entity
-  required string creator = 3;
+  string creator = 3;
 
-  required string nonce = 4;
+  string nonce = 4;
 
-  required string signatureValue = 5;
+  string signatureValue = 5;
   
 }

@@ -1,10 +1,10 @@
-syntax = "proto2";
+syntax = "proto3";
 
 message Rating {
 
-  optional uint32 min = 1;
+  uint32 min = 1;
   
-  optional uint32 max = 2;
+  uint32 max = 2;
   
-  optional uint32 value = 3;
+  uint32 value = 3;
 }

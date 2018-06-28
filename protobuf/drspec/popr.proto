@@ -1,4 +1,4 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "signature.proto";
 
@@ -6,57 +6,52 @@ message PoPR {
 
   message ReviewAttribute {
 
-    required string name = 1;
+    string name = 1;
 
-    required uint32 min_rating = 2;
+    uint32 min_rating = 2;
 
-    required uint32 max_rating = 3;    
+    uint32 max_rating = 3;    
 
-    required string description = 4;
+    string description = 4;
 
-    required bool is_required = 5;
+    bool is_= 5;
 
   }
 
-  optional string item_id = 1;
+  string item_id = 1;
 
-  optional string invoice_id = 2;
+  string invoice_id = 2;
 
   // marketplace customer identifier
-  optional string customer_id = 3;
+  string customer_id = 3;
 
-  optional uint64 created_at = 4;
+  uint64 created_at = 4;
 
-  optional uint64 expires_at = 5;
+  uint64 expires_at = 5;
 
   // for determining the blockchain to use, should be like btc, tbtc etc
-  required string currency_symbol = 6;
+  string currency_symbol = 6;
 
-  required int32 amount = 7;
+  int32 amount = 7;
 
-  optional string marketplace_url = 8;
+  string marketplace_url = 8;
 
-  optional string marketplace_vendor_url = 9;
+  string marketplace_vendor_url = 9;
 
 
   // the vendor marketplace cosigned key location
-  required string key_location = 10;
+  string key_location = 10;
 
-  required uint32 chlu_version = 11;
+  uint32 chlu_version = 11;
 
   repeated ReviewAttribute attributes = 12;
 
-  // deprecated
-  required string signature = 13;
-
-  // deprecated
-  required string vendor_key_location = 14;
-
-  // deprecated
-  required string vendor_encryption_key_location = 15;
-
   // vendor key location and vendor encryption key location should resolve from the did
-  required string vendor_did = 16;
+  string vendor_did = 13;
 
-  required Signature sig = 17;
+  Signature signature = 14;
+
+  Signature marketplace_signature = 15;
+
+  Signature vendor_signature = 16;
 }

@@ -1,10 +1,14 @@
-syntax = "proto2";
+syntax = "proto3";
 
 import "review_record.proto";
 
 message PaymentRecord {
-  required string customer_address = 1;
-  required string vendor_address = 2;
-  required int32 amount = 3;
-  required ReviewRecord review_record = 4;
+
+  string customer_address = 1;
+
+  string vendor_address = 2;
+
+  int32 amount = 3;
+
+  ReviewRecord review_record = 4;
 }
