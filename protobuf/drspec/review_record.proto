@@ -37,8 +37,7 @@ message ReviewRecord {
 
   string hash = 9;
 
-  // Shouldn't be used anymore
-  string signature = 10;
+  Signature customer_signature = 10;
 
   string key_location = 11;
 
@@ -88,7 +87,7 @@ message ReviewRecord {
 
   message Review {
 
-    uint64 date_publised = 1;
+    uint64 date_published = 1;
 
     string url = 2;
 
