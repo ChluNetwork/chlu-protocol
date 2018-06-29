@@ -14,7 +14,7 @@ message PoPR {
 
     string description = 4;
 
-    bool is_= 5;
+    bool is_required = 5;
 
   }
 
